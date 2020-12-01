@@ -7,12 +7,19 @@ class School
   end
 
   def add_student(name, grade)
-    roster[grade] ||= []
-    roster[grade] << name
+    # I only half understand this ||= thing, but it works so whatever.
+    @roster[grade] ||= []
+    @roster[grade] << name
   end
 
   def grade(grade)
-    roster[grade]
+    @roster[grade]
   end
 
+  def sort
+    @roster.each do |grade, names|
+      @roster[grade] = names.sort
+    end
+    @roster 
+  end
 end
